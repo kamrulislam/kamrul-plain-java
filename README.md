@@ -11,4 +11,11 @@ This a plain java project. I have used this project later to convert it into a *
 - Also designed in a modular way so that it can be migrated to any build tool (e.g. maven)
 - Used data structures (e.g., ArrayList, HashMap) to reduce search (i.e., lookup) time complexity. 
 
+## How to run
+
+To run the project, simply use the following command
+
+```
+./run.sh
+```
 
