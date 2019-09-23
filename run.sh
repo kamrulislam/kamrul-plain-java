@@ -1,3 +1,3 @@
 #!bin/bash
 
-javac kamrul/KamrulPlainJavaApplication.java && java kamrul/KamrulPlainJavaApplication
+javac Main.java && java Main
