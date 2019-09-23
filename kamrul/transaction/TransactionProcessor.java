@@ -61,6 +61,10 @@ public class TransactionProcessor {
             if (fromAccount.equals(toAccount)) {
                 return;
             }
+            if(transaction.getTransactionType() == TransactionType.REVERSAL) {
+                this.transactionsMapForReversal.put(transaction.getRelatedTransaction(), transaction);
+                return;
+            }
             if (!transactionsMapForAccount.containsKey(fromAccount)) {
                 transactionsMapForAccount.put(fromAccount, new ArrayList());
             } 
@@ -71,9 +75,7 @@ public class TransactionProcessor {
             } 
             transactionsMapForAccount.get(toAccount).add(transaction);
 
-            if(transaction.getTransactionType() == TransactionType.REVERSAL) {
-                this.transactionsMapForReversal.put(transaction.getTransactionId(), transaction);
-            }
+
         });
     }
 

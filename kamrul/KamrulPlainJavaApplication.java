@@ -24,9 +24,9 @@ public class KamrulPlainJavaApplication {
         TransactionProcessor processor = new TransactionProcessor(transactions);
 
         Balance balance = processor.calculateRelativeAccountBalance(
-            "X",
-            "",
-            ""
+            "ACC334455",
+            "20/10/2018 12:00:00",
+            "20/10/2018 19:00:00"
         );
 
         System.out.println("Relative balance for the period is: " + balance.getAmount());

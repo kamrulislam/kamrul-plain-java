@@ -1,7 +1,7 @@
 package kamrul.transaction;
 
 import java.text.SimpleDateFormat;
-import java.util.Date; 
+import java.util.Date;
 
 import kamrul.transaction.TransactionType;
 
@@ -20,22 +20,21 @@ public class Transaction {
         this.dateFormatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
     }
 
-
     public Transaction fromStringCsv(String csvData) {
         try {
             String[] strDataArr = csvData.split(",", -2);
-            this.transactionId = strDataArr[0];
-            this.fromAccountId = strDataArr[1];
-            this.toAccountId = strDataArr[2];
-            this.createAt = this.dateFormatter.parse(strDataArr[3]);
-            this.amount = Float.parseFloat(strDataArr[4]);
-            this.transactionType = TransactionType.valueOf(strDataArr[5]);
+            this.transactionId = strDataArr[0].trim();
+            this.fromAccountId = strDataArr[1].trim();
+            this.toAccountId = strDataArr[2].trim();
+            this.createAt = this.dateFormatter.parse(strDataArr[3].trim());
+            this.amount = Float.parseFloat(strDataArr[4].trim());
+            this.transactionType = TransactionType.valueOf(strDataArr[5].trim());
             if (this.transactionType == TransactionType.REVERSAL) {
-                this.relatedTransaction = strDataArr[6];
+                this.relatedTransaction = strDataArr[6].trim();
             }
-    
-        } catch(Exception e) {
 
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return this;
     }
@@ -44,56 +43,46 @@ public class Transaction {
         return transactionId;
     }
 
-    // public void setTransactionId(String transactionId) {
-    //     this.transactionId = transactionId;
-    // }
 
     public String getFromAccountId() {
         return fromAccountId;
     }
 
-    // public void setFromAccountId(String fromAccountId) {
-    //     this.fromAccountId = fromAccountId;
-    // }
 
     public String getToAccountId() {
         return toAccountId;
     }
 
-    // public void setToAccountId(String toAccountId) {
-    //     this.toAccountId = toAccountId;
-    // }
 
     public Date getCreateAt() {
         return createAt;
     }
 
-    // public void setCreateAt(Date createAt) {
-    //     this.createAt = createAt;
-    // }
 
     public float getAmount() {
         return amount;
     }
 
-    // public void setAmount(float amount) {
-    //     this.amount = amount;
-    // }
 
     public TransactionType getTransactionType() {
         return transactionType;
     }
 
-    // public void setTransactionType(TransactionType transactionType) {
-    //     this.transactionType = transactionType;
-    // }
 
     public String getRelatedTransaction() {
         return relatedTransaction;
     }
 
-    // public void setRelatedTransaction(String relatedTransaction) {
-    //     this.relatedTransaction = relatedTransaction;
-    // }
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return "Transaction(transactionId:" + transactionId +
+        ", fromAccountId:" + fromAccountId +
+        ", toAccountId:" + toAccountId + 
+        ", amount: " + amount + 
+        ", createAt: " + createAt +
+        ", transactionType: " + transactionType + 
+        ", relatedTransaction: " + (relatedTransaction != null ? relatedTransaction : "") + ")" ;
+    }
 
 }
