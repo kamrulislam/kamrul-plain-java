@@ -32,5 +32,16 @@ public class Main {
 
         System.out.println("Relative balance for the period is: " + result.getAmount());
         System.out.println("Number of transactions included is: " + result.getNumberOfTransactions());
+
+        //process 2
+
+        result = processor.calculateRelativeAccountBalance(
+                "ACC778899",
+                "20/10/2018 12:00:00",
+                "20/10/2018 19:00:00"
+        );
+
+        System.out.println("Relative balance for the period is: " + result.getAmount());
+        System.out.println("Number of transactions included is: " + result.getNumberOfTransactions());
     }
 }
