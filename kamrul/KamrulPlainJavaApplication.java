@@ -31,7 +31,6 @@ public class KamrulPlainJavaApplication {
 
         System.out.println("Relative balance for the period is: " + balance.getAmount());
         System.out.println("Number of transactions included is: " + balance.getNumberOfTransactions());
-        System.out.println("length: " + result.size());
     }
 }
 
