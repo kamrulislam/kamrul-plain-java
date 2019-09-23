@@ -19,3 +19,10 @@ To run the project, simply use the following command
 ./run.sh
 ```
 
+## Assumptions
+
+I am considering 
+
+- when a transaction is in Reversal Type, it revers the *whole transaction*.
+  
+   
