@@ -47,6 +47,11 @@ public class TransactionProcessor implements IProcess {
                 totalTransactions += 1;
                 totalAmount += getAmountForAccount(transaction, accountId);
             }
+            // no need to go further if to transaction created after the toDate
+            // NOTE: this is possible as the given transactions will be sorted
+            if (transaction.getCreateAt().compareTo(toDate) > 0) {
+                break;
+            }
         }
 
         return new Balance(totalTransactions, totalAmount);
@@ -65,6 +70,7 @@ public class TransactionProcessor implements IProcess {
                 return;
             }
             // putting reversal on a separate list.
+            // NOTE: considering the whole transaction has been reversed
             if(transaction.getTransactionType() == TransactionType.REVERSAL) {
                 this.transactionsMapForReversal.put(transaction.getRelatedTransaction(), true);
                 return;
