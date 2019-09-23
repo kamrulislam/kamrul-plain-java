@@ -7,11 +7,13 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Date;
 
+import kamrul.IProcess;
+import kamrul.IResult;
 import kamrul.account.Balance;
 import kamrul.transaction.Transaction;
 import kamrul.transaction.TransactionType;
 
-public class TransactionProcessor {
+public class TransactionProcessor implements IProcess {
     private List<Transaction> transactions;
     private Map<String, List<Transaction>> transactionsMapForAccount;
     private Map<String, Transaction> transactionsMapForReversal;
@@ -23,7 +25,7 @@ public class TransactionProcessor {
         this.preProcessTransactions(); 
     }
 
-    public Balance calculateRelativeAccountBalance(String accountId, String fromDateStr, String toDateStr) {
+    public IResult calculateRelativeAccountBalance(String accountId, String fromDateStr, String toDateStr) {
         List<Transaction> transactionsToConsider = this.transactionsMapForAccount.get(accountId);
         Date fromDate = new Date(), toDate = new Date();
         try {

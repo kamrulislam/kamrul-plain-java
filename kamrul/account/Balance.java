@@ -1,6 +1,8 @@
 package kamrul.account;
 
-public class Balance {
+import kamrul.IResult;
+
+public class Balance implements IResult {
     private Integer numberOfTransactions;
     private Float amount;
 
